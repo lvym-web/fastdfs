@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{|/index/upload|}" method="post" enctype="multipart/form-data">
+    姓名: <span th:text="${fdfs.userName}"></span><br>
+    组名: <span th:text="${fdfs.groupName}"></span><br>
+    文件名: <span th:text="${fdfs.remoteFilepath}"></span><br>
+    老文件名: <span th:text="${fdfs.oldFilename}"></span><br>
+    文件大小: <span th:text="${fdfs.fileSize}"></span><br>
+    文件类型: <span th:text="${fdfs.fileType}"></span><br>
+    文件:<input type="file" name="myfile"><br>
+    <input type="hidden" name="id" th:value="${fdfs.id}">
+    <input type="submit" value="上传">
+</form>
+
+</body>
+</html>

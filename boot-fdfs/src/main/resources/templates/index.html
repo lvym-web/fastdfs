@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>序号</td>
+        <td>姓名</td>
+        <td>组名</td>
+        <td>文件名</td>
+        <td>老文件名</td>
+        <td>文件大小</td>
+        <td>文件类型</td>
+    </tr>
+    <tr th:each="list:${fdfsList}">
+        <td th:text="${list.getId()}">序号</td>
+        <td th:text="${list.getUserName()}">姓名</td>
+        <td th:text="${list.getGroupName()}">组名</td>
+        <td th:text="${list.getRemoteFilepath()}">文件名</td>
+        <td th:text="${list.getOldFilename()}">老文件名</td>
+        <td th:text="${list.getFileSize()}">文件大小</td>
+        <td th:text="${list.getFileType()}">文件类型</td>
+        <td>
+            <span th:if="${list.getRemoteFilepath()==null || list.getOldFilename()==''}">
+                            <a th:href="@{|/index/upload/${list.getId()}|}">上传</a>
+            </span>
+            <span th:if="${list.getRemoteFilepath()!=null && list.getOldFilename()!=''}">
+                <a th:href="@{|/index/download/${list.getId()}|}">下载</a>
+            <a th:href="@{|/index/delete/${list.getId()}|}">删除</a>
+            </span>
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>
